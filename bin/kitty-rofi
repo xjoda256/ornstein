@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+###################
+## another ########
+## ×Joda™ #########
+## masterpiece ####
+###################
+
+CHOSEN_THEME=$(find ~/.config/kitty/ -maxdepth 1 -name "*.conf" ! -name "kitty*" -printf "%f\n" | sort | rofi -dmenu)
+REMOTE_ENABLED=$(grep -Eq '^[^#]*allow_remote_control yes' .config/kitty/kitty.conf)
+
+if
+	[[ -z "$CHOSEN_THEME"  ]] ; 
+	then
+		echo "No theme selected" 
+		exit 1
+	else
+		sed -i '/^include/d' ~/.config/kitty/kitty.conf
+		sleep 0.1
+		echo "include $CHOSEN_THEME" >> ~/.config/kitty/kitty.conf
+fi
+
+if
+	[[ -z "$REMOTE_ENABLED" ]]; 
+	then
+		kitten @ load-config 
+		echo "$CHOSEN_THEME enabled"
+	else  
+		echo "kitty remote control disabled. reload config to apply changes (ctrl+shift+f5 by default)" 
+fi
+

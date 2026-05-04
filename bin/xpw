@@ -1,0 +1,2 @@
+#!/bin/bash
+grep $1 ~/.pws |cut -d ' ' -f 3 |xclip -rmlastnl -selection clipboard

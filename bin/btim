@@ -1,0 +1,5 @@
+#!/bin/bash
+## Sends a notification in $1 seconds 
+
+sleep $1 && notify-send -u critical "Time's Up!" "$2"
+

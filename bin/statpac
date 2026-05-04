@@ -1,0 +1,11 @@
+#!/bin/bash
+############################
+## another masterpiece by ##
+## ×Joda™ ##################
+############################
+
+while 
+	IFS= read -r line; 
+	do pkgstats show $line | sed q1
+	done <<< "$(pacman -Qqe)"
+

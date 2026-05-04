@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2140
+# too many escapes for my tiny brain to parse how to fix it
+#################
+## another ######
+## ×Joda™ #######
+## masterpiece ##
+#################
+
+# ansi with no arguments prints 0 to 255
+if [ "$#" -eq 0 ]; then
+for i in {0..255}; do
+	printf "\e[38;5;"%03d"m\\\e[38;5;"%03d"m " "$i" "$i"
+done | fold -w 96
+
+# ansi with base followed by a number prints 0 to 1 - number
+# i.e. ansi base 16 prints 0 to 15
+elif [ "$1" == "base" ]; then
+for ((j=0; j<=$2-1; j++)); do
+	printf "\e[38;5;"%03d"m\\\e[38;5;"%03d"m " "$j" "$j"
+done | fold -w 96
+
+# ansi number prints just that one number
+# i.e. ansi 4
+else
+	printf "\e[38;5;"%03d"m\\\e[38;5;"%03d"m " "$1" "$1"
+fi
+

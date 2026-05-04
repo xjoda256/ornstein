@@ -1,0 +1,26 @@
+#!/bin/bash
+############################
+## another masterpiece by ##
+## ×Joda™ ##################
+############################
+
+RANDOM=$(date +%N) 
+if [ $# -eq 0 ]
+				then
+								echo "$RANDOM" 
+				fi
+if [ $# -eq 1 ]
+then
+				echo "$((1 + RANDOM % $1))" 2>/dev/null
+fi
+if [ $# -eq 2 ]
+				then
+								echo "$(($1 + RANDOM % $2))" 2>/dev/null
+				fi
+if [ $# -eq 3 ]
+				then
+				for i in $(seq "$3")
+				do echo "$(($1 + RANDOM % $2))" 2>/dev/null
+				done
+fi
+

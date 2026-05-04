@@ -1,0 +1,13 @@
+[config]
+
+[templates.wmenu-launcher]
+input_path = '/home/joda/.config/matugen/templates/wmenu-launcher.sh.tpl'
+output_path = '/home/joda/bin/wmenu-launcher'
+
+[templates.kitty]
+input_path = '/home/joda/.config/matugen/templates/kitty.conf'
+output_path = '/home/joda/.config/kitty/dank-theme.conf'
+
+[templates.kitty-tabs]
+input_path = '/home/joda/.config/matugen/templates/kitty-tabs.conf'
+output_path = '/home/joda/.config/kitty/dank-tabs.conf'

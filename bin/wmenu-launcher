@@ -1,0 +1,18 @@
+#!/bin/bash
+# wmenu-launcer
+#
+BG_NORMAL="#0c1515"      # colors.surface.default.hex
+FG_NORMAL="#dae5e3"      # colors.on_surface.default.hex
+BG_SELECTED="#ffb77a"    # colors.primary.default.hex
+FG_SELECTED="#4c2700"    # colors.on_primary.default.hex
+
+wmenu-run \
+	-N "$BG_NORMAL" \
+	-n "$FG_NORMAL" \
+	-M "$BG_NORMAL" \
+	-m "$FG_NORMAL" \
+	-S "$BG_SELECTED" \
+	-s "$FG_SELECTED" \
+	-p " " \
+	-f "FiraCode Nerd Font Mono 16" \
+	"$@"

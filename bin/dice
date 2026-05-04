@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#################
+## another ######
+## ×Joda™ #######
+## masterpiece ##
+#################
+
+spin() {
+    local i=0
+		local sp="123456789"
+    local n=${#sp}
+    printf ' '
+    while sleep 0.1; do
+        printf '\b%s' "${sp:i++%n:1}"
+    done
+}
+
+start_spinner() {
+    spin &
+    SPIN_PID=$!
+}
+
+stop_spinner() {
+    kill -9 $SPIN_PID > /dev/null 2>&1
+    printf '\b%s' " "
+    printf '\b'
+} 
+
+if [ $# == 0 ]
+then
+	echo "Usage: dice <sides>. i.e. dice 20" && exit
+fi
+
+start_spinner
+sleep "$(awk 'BEGIN {srand(); printf "%.04f\n", rand() + 0.5}')"
+stop_spinner
+printf "$((1 + RANDOM % $1))" "$1"
+
