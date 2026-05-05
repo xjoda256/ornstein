@@ -1,0 +1,2 @@
+sudo pacman -S bluez gtk4 gtk4-layer-shell hyprland hyprpicker libnotify libpipewire libpulse matugen networkmanager pam pipewire-alsa power-profiles-daemon upower wf-recorder clang rust rsync
+git clone git@github.com:JohnOberhauser/OkShell.git
