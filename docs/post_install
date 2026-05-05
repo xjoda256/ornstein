@@ -1,0 +1,8 @@
+dms greeter install
+ln -sf ~/.cache/wal/dank-pywalfox.json ~/.cache/wal/colors.json
+systemctl --user enable --now psd.service
+
+hyprpm update
+hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
+hyprpm enable dynamic-cursors
+
