@@ -102,6 +102,5 @@ vim.lsp.config("lua_ls", {
 
 -- set colorscheme --
 vim.cmd([[colorscheme tokyonight]])
--- require("plugins.dankcolors")
 vim.cmd([[highlight StatusLine none]])
 

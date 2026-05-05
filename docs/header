@@ -11,10 +11,3 @@
 ## │                               masterpiece│ ##
 ## ╰──────────────────────────────────────────╯ ##
 ###×Joda™#########################################
-
-CPU=$(sensors |grep "Core 0" |printf " $(cut -b '17,18')°C ")
-BATT=$(printf "%s%%" $(cat $(fd BAT /sys/class/)/capacity))
-MEM=$(free -m |sed -n 2p |awk '{printf "%.1f", $7 / 1000}')
-SWAP=$(free -m |sed -n 3p |awk '{printf "%.1f", $4 / 1000}')
-
-echo " ${CPU} █  󰁹 ${BATT}  █   ${MEM}  █   ${SWAP} "
