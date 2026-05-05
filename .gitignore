@@ -3,9 +3,7 @@
 !bin/
 !bin/**
 !docs/
-!docs/@*
-!docs/explicit*
-!docs/*_configuration.json
+!docs/**
 !.face
 !wallpaper.jpg
 !.bashrc
