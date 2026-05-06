@@ -22,10 +22,102 @@
     "auth_config": null,
     "bootloader_config": {
         "bootloader": "Grub",
-        "removable": false,
+        "removable": true,
         "uki": false
     },
     "custom_commands": [],
+    "disk_config": {
+        "btrfs_options": {
+            "snapshot_config": {
+                "type": "Snapper"
+            }
+        },
+        "config_type": "default_layout",
+        "device_modifications": [
+            {
+                "device": "/dev/sda",
+                "partitions": [
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [
+                            "boot",
+                            "esp"
+                        ],
+                        "fs_type": "fat32",
+                        "mount_options": [],
+                        "mountpoint": "/boot",
+                        "obj_id": "d15edfd1-2214-4cf6-be86-8ed2f34648c6",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "GiB",
+                            "value": 1
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 1
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
+                    {
+                        "btrfs": [
+                            {
+                                "mountpoint": "/",
+                                "name": "@"
+                            },
+                            {
+                                "mountpoint": "/home",
+                                "name": "@home"
+                            },
+                            {
+                                "mountpoint": "/var/log",
+                                "name": "@log"
+                            },
+                            {
+                                "mountpoint": "/var/cache/pacman/pkg",
+                                "name": "@pkg"
+                            }
+                        ],
+                        "dev_path": null,
+                        "flags": [],
+                        "fs_type": "btrfs",
+                        "mount_options": [
+                            "compress=zstd"
+                        ],
+                        "mountpoint": null,
+                        "obj_id": "4dc7fb9f-92d1-4450-b90d-9884be6702f3",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 248983322624
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 1074790400
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    }
+                ],
+                "wipe": true
+            }
+        ]
+    },
     "hostname": "archlinux",
     "kernels": [
         "linux-zen"
@@ -186,6 +278,7 @@
         "cava",
         "cmake",
         "cpio",
+        "cracklib",
         "cyme",
         "dms-shell",
         "dms-shell-hyprland",
@@ -197,16 +290,20 @@
         "fzf",
         "gitprompt-rs",
         "gvfs",
+        "hyprland",
         "hyprpicker",
         "hyprpolkitagent",
+        "intel-ucode",
         "jq",
         "kitty",
         "libgepub",
         "libgsf",
         "libopenraw",
         "lolcat",
+        "lsof",
         "matugen",
         "neovim",
+        "networkmanager",
         "npm",
         "ollama",
         "opencode",
@@ -220,12 +317,14 @@
         "resvg",
         "ripgrep",
         "rsync",
+        "speedtest-cli",
         "swappy",
-        "tesseract-data-eng",
+        "telegram-desktop",
         "thunar",
         "thunar-archive-plugin",
         "thunar-media-tags-plugin",
         "thunar-volman",
+        "tmux",
         "ttf-firacode-nerd",
         "tumbler",
         "unzip",
@@ -237,7 +336,6 @@
         "xdg-desktop-portal-hyprland",
         "yazi",
         "zathura",
-				"zathura-pdf-mupdf",
         "zip",
         "zoxide"
     ],

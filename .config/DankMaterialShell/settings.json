@@ -278,7 +278,7 @@
   "batteryLockTimeout": 600,
   "batterySuspendTimeout": 1800,
   "batterySuspendBehavior": 0,
-  "batteryProfileName": "0",
+  "batteryProfileName": "",
   "batteryChargeLimit": 100,
   "lockBeforeSuspend": false,
   "loginctlLockIntegration": true,
@@ -455,6 +455,10 @@
           "showBatteryIcon": false,
           "showPrinterIcon": false,
           "showScreenSharingIcon": true
+        },
+        {
+          "id": "idleInhibitor",
+          "enabled": true
         }
       ],
       "centerWidgets": [
