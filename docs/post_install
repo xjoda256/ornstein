@@ -1,8 +1,30 @@
+## ==== WIP ===== ##
+## === ×Joda™ === ##
+git clone https://codeberg.org/xjoda/ornstein
+##
+fend-bin
+grub-hook
+grub-theme-hook
+mintstick
+newsraft
+papirus-folders
+plymouth-theme-hexagon-hud-git
+python-pywalfox
+qt6ct-kde
+##
+grub-theme-arch-linux
+##
+/etc/pacman.conf
+/etc/makepkg.conf
+/etc/mkinitcpio.conf
+/etc/default/grub
+/etc/plymouth/plymouthd.conf
+/etc/systemd/system/plymouth-wait.service
+##
 dms greeter install
 ln -sf ~/.cache/wal/dank-pywalfox.json ~/.cache/wal/colors.json
 systemctl --user enable --now psd.service
-
+##
 hyprpm update
 hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
 hyprpm enable dynamic-cursors
-
