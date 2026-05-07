@@ -104,3 +104,7 @@ fullline() {
 	printf '%*s\n' "$(tput cols)" '' | sed 's/ /─/g'
 }
 
+yold() {
+	echo "$(date +%Y) is the year of the Linux desktop"
+}
+
