@@ -20,7 +20,7 @@
 !.config/hypr/
 !.config/hypr/*.conf
 !.config/hypr/dms/
-!.config/hypr/dms/*
+!.config/hypr/dms/**
 !.config/DankMaterialShell/
 !.config/DankMaterialShell/*settings*
 !.config/matugen/
