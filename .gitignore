@@ -11,6 +11,7 @@
 !.bash_functions
 !.bash_profile
 !README.md
+!.XCompose
 !.config/
 !.config/kitty/
 !.config/kitty/*.conf
