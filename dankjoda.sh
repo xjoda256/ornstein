@@ -19,7 +19,7 @@ EOF
 
 DOTFILES_REPO="https://codeberg.org/xjoda/ornstein"
 DOTFILES_FALLBACK="git@github.com:xjoda256/ornstein.git"
-DOCS_ETC="/home/joda/docs/etc"
+DOTDIR="$HOME/.cache/ornstein"
 
 AUR_PACKAGES=(
   apple-fonts
@@ -33,9 +33,19 @@ AUR_PACKAGES=(
 )
 
 # ---------------------------------------------------------------------------
-# system files (from docs/etc/) — must run before any package installs
+# dotfiles (mirrors home dir structure)
+# ---------------------------------------------------------------------------
+echo "==> Cloning dotfiles to $DOTDIR..."
+git clone "$DOTFILES_REPO" "$DOTDIR" || git clone "$DOTFILES_FALLBACK" "$DOTDIR"
+
+echo "==> Copying dotfiles to home dir..."
+rsync -a --exclude=.git "$DOTDIR"/ "$HOME"/
+
+# ---------------------------------------------------------------------------
+# system files (from cloned repo's docs/etc/)
 # ---------------------------------------------------------------------------
 echo "==> Copying system config files..."
+DOCS_ETC="$DOTDIR/docs/etc"
 SYSTEM_FILES=(
   pacman.conf
   makepkg.conf
@@ -87,16 +97,6 @@ if ! command -v yay &>/dev/null; then
 fi
 
 # ---------------------------------------------------------------------------
-# dotfiles (mirrors home dir structure)
-# ---------------------------------------------------------------------------
-DOTDIR="$HOME/.cache/ornstein"
-echo "==> Cloning dotfiles to $DOTDIR..."
-git clone "$DOTFILES_REPO" "$DOTDIR" || git clone "$DOTFILES_FALLBACK" "$DOTDIR"
-
-echo "==> Copying dotfiles to home dir..."
-rsync -a --exclude=.git "$DOTDIR"/ "$HOME"/
-
-# ---------------------------------------------------------------------------
 # AUR packages
 # ---------------------------------------------------------------------------
 echo "==> Installing AUR packages..."
@@ -127,11 +127,3 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "✔ Done."
 
-# NOTES after testing script:
-# copy system files first
-# add /etc/sudoers to system files
-# get rid of grub theme stuff
-# use i_use_arch_btw plymouth theme instead
-# yay_install doesnt need to remove go
-# run0 is installed? i dont think i need that. dms greeter install picked that up
-# dms greeter is bugging out so skip that step too
