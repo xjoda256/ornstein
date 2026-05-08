@@ -44,7 +44,8 @@ if [[ ! -d "$DOTDIR" ]]; then
   echo "==> Cloning dotfiles to $DOTDIR..."
   git clone "$DOTFILES_REPO" "$DOTDIR" || git clone "$DOTFILES_FALLBACK" "$DOTDIR"
 else
-  echo "==> $DOTDIR already exists, skipping clone"
+  echo "==> $DOTDIR already exists, pulling updates..."
+  git -C "$DOTDIR" pull --ff-only || echo "  WARNING: pull failed, continuing"
 fi
 
 echo "==> Copying dotfiles to home dir..."
