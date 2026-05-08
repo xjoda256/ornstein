@@ -27,11 +27,6 @@
     },
     "custom_commands": [],
     "disk_config": {
-        "btrfs_options": {
-            "snapshot_config": {
-                "type": "Snapper"
-            }
-        },
         "config_type": "default_layout",
         "device_modifications": [
             {
@@ -295,6 +290,7 @@
         "hyprpolkitagent",
         "intel-ucode",
         "jq",
+        "kdeconnect",
         "kitty",
         "libgepub",
         "libgsf",
@@ -337,7 +333,8 @@
         "yazi",
         "zathura",
         "zip",
-        "zoxide"
+        "zoxide",
+        "transmission-gtk"
     ],
     "pacman_config": {
         "color": true,
