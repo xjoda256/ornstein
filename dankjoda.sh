@@ -1,0 +1,137 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cat << "EOF"
+##################################################
+## ╭──────────────────────────────────────────╮ ##
+## │another                                   │ ##
+## │       _____              __              │ ##
+## │      /\___ \            /\ \             │ ##
+## │ __  _\/__/\ \    ___    \_\ \     __     │ ##
+## │/\ \/'\  _\ \ \  / __`\  /'_` \  /'__`\   │ ##
+## │\/>  </ /\ \_\ \/\ \L\ \/\ \L\ \/\ \L\.\_ │ ##
+## │ /\_/\_\\ \____/\ \____/\ \___,_\ \__/.\_\│ ##
+## │ \//\/_/ \/___/  \/___/  \/__,_ /\/__/\/_/│ ##
+## │                               masterpiece│ ##
+## ╰──────────────────────────────────────────╯ ##
+## ×Joda™ w/Big Pickle ###########################
+EOF
+
+DOTFILES_REPO="https://codeberg.org/xjoda/ornstein"
+DOTFILES_FALLBACK="git@github.com:xjoda256/ornstein.git"
+DOCS_ETC="/home/joda/docs/etc"
+
+AUR_PACKAGES=(
+  apple-fonts
+  fend-bin
+  grub-hook
+  mintstick
+  newsraft
+  papirus-folders
+  python-pywalfox
+  qt6ct-kde
+)
+
+# ---------------------------------------------------------------------------
+# system files (from docs/etc/) — must run before any package installs
+# ---------------------------------------------------------------------------
+echo "==> Copying system config files..."
+SYSTEM_FILES=(
+  pacman.conf
+  makepkg.conf
+  mkinitcpio.conf
+  sudoers
+  default/grub
+  plymouth/plymouthd.conf
+  systemd/system/plymouth-wait.service
+)
+
+for f in "${SYSTEM_FILES[@]}"; do
+  src="$DOCS_ETC/$f"
+  dest="/etc/$f"
+  if [[ -f "$src" ]]; then
+    echo "  Installing $dest"
+    sudo cp "$src" "$dest"
+  else
+    echo "  WARNING: $src not found, skipping"
+  fi
+done
+
+# ---------------------------------------------------------------------------
+# yay_install - builds yay-bin from the AUR
+# ---------------------------------------------------------------------------
+yay_install() {
+  echo "==============================="
+  echo "   ArchBANG yay installer"
+  echo "==============================="
+
+  sudo pacman -Sy --needed --noconfirm base-devel git
+
+  tmpdir=$(mktemp -d)
+  cd "$tmpdir"
+  git clone https://aur.archlinux.org/yay-bin.git
+  cd yay-bin
+  makepkg -si --noconfirm
+
+  cd ~
+  rm -rf "$tmpdir"
+
+  echo "✔ yay installed successfully"
+}
+
+# ---------------------------------------------------------------------------
+# ensure yay is available
+# ---------------------------------------------------------------------------
+if ! command -v yay &>/dev/null; then
+  yay_install
+fi
+
+# ---------------------------------------------------------------------------
+# dotfiles (mirrors home dir structure)
+# ---------------------------------------------------------------------------
+DOTDIR="$HOME/.cache/ornstein"
+echo "==> Cloning dotfiles to $DOTDIR..."
+git clone "$DOTFILES_REPO" "$DOTDIR" || git clone "$DOTFILES_FALLBACK" "$DOTDIR"
+
+echo "==> Copying dotfiles to home dir..."
+rsync -a --exclude=.git "$DOTDIR"/ "$HOME"/
+
+# ---------------------------------------------------------------------------
+# AUR packages
+# ---------------------------------------------------------------------------
+echo "==> Installing AUR packages..."
+yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
+
+echo "==> Installing plymouth theme..."
+yay -S --needed --noconfirm plymouth-i_use_arch_btw-git
+sudo plymouth-set-default-theme i_use_arch_btw
+
+echo "==> Linking pywalfox colors..."
+ln -sf ~/.cache/wal/dank-pywalfox.json ~/.cache/wal/colors.json
+
+echo "==> Enabling services..."
+sudo systemctl enable --now sshd.service
+sudo systemctl enable --now plymouth-wait.service
+systemctl --user enable --now psd.service
+
+echo "==> Updating Hypr plugins..."
+hyprpm update
+hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
+hyprpm enable dynamic-cursors
+
+echo "==> Rebuilding initramfs..."
+sudo mkinitcpio -P
+
+echo "==> Updating GRUB config..."
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+echo "✔ Done."
+
+# NOTES after testing script:
+# copy system files first
+# add /etc/sudoers to system files
+# get rid of grub theme stuff
+# use i_use_arch_btw plymouth theme instead
+# yay_install doesnt need to remove go
+# run0 is installed? i dont think i need that. dms greeter install picked that up
+# dms greeter is bugging out so skip that step too

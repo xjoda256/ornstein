@@ -19,7 +19,7 @@
         }
     },
     "archinstall-language": "English",
-    "auth_config": null,
+    "auth_config": {},
     "bootloader_config": {
         "bootloader": "Grub",
         "removable": true,
@@ -27,10 +27,13 @@
     },
     "custom_commands": [],
     "disk_config": {
+        "btrfs_options": {
+            "snapshot_config": null
+        },
         "config_type": "default_layout",
         "device_modifications": [
             {
-                "device": "/dev/sda",
+                "device": "/dev/sdb",
                 "partitions": [
                     {
                         "btrfs": [],
@@ -42,7 +45,7 @@
                         "fs_type": "fat32",
                         "mount_options": [],
                         "mountpoint": "/boot",
-                        "obj_id": "d15edfd1-2214-4cf6-be86-8ed2f34648c6",
+                        "obj_id": "9440d705-be56-4930-80bb-a4fd878c82a9",
                         "size": {
                             "sector_size": {
                                 "unit": "B",
@@ -88,14 +91,14 @@
                             "compress=zstd"
                         ],
                         "mountpoint": null,
-                        "obj_id": "4dc7fb9f-92d1-4450-b90d-9884be6702f3",
+                        "obj_id": "44db55f9-20ba-49e9-b6d8-1769d4959a7c",
                         "size": {
                             "sector_size": {
                                 "unit": "B",
                                 "value": 512
                             },
                             "unit": "B",
-                            "value": 248983322624
+                            "value": 246917627904
                         },
                         "start": {
                             "sector_size": {
@@ -113,7 +116,7 @@
             }
         ]
     },
-    "hostname": "archlinux",
+    "hostname": "tarkus",
     "kernels": [
         "linux-zen"
     ],
@@ -321,6 +324,7 @@
         "thunar-media-tags-plugin",
         "thunar-volman",
         "tmux",
+        "transmission-gtk",
         "ttf-firacode-nerd",
         "tumbler",
         "unzip",
