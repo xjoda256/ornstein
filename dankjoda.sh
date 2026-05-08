@@ -132,8 +132,12 @@ systemctl --user enable --now psd.service
 
 echo "==> Updating Hypr plugins..."
 hyprpm update
-hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
-hyprpm enable dynamic-cursors
+if ! hyprpm list | grep -q dynamic-cursors; then
+  hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
+  hyprpm enable dynamic-cursors
+else
+  echo "  dynamic-cursors plugin already installed"
+fi
 
 echo "==> Rebuilding initramfs..."
 sudo mkinitcpio -P
