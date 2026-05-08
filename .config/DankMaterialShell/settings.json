@@ -455,10 +455,6 @@
           "showBatteryIcon": false,
           "showPrinterIcon": false,
           "showScreenSharingIcon": true
-        },
-        {
-          "id": "idleInhibitor",
-          "enabled": true
         }
       ],
       "centerWidgets": [

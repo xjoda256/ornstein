@@ -6,6 +6,7 @@
 !docs/**
 !.face
 !wallpaper.jpg
+!screenshot*
 !.bashrc
 !.bash_completion
 !.bash_functions
