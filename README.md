@@ -34,7 +34,7 @@ Or download and run locally:
 
 ## Notes
 
-- Idempotent — safe to re-run if it fails partway through (skips completed steps)
+- Safe to re-run if it fails partway through (skips completed steps)
 - Re-running also works as a system/dotfiles updater
 - Requires Hyprland to be running (needed for hyprpm)
 - System files are copied with `sudo`, so you'll be prompted for credentials
