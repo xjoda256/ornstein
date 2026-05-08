@@ -10,6 +10,7 @@
 !.bash_completion
 !.bash_functions
 !.bash_profile
+!README.md
 !.config/
 !.config/kitty/
 !.config/kitty/*.conf
