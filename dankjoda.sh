@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+export start_time=$(date +%s)
 
 if ! pgrep -x Hyprland &>/dev/null; then
   echo "Hyprland must be running to run this script." >&2
@@ -19,7 +20,7 @@ lolcat << "EOF"
 ## │ \//\/_/ \/___/  \/___/  \/__,_ /\/__/\/_/│ ##
 ## │                               masterpiece│ ##
 ## ╰──────────────────────────────────────────╯ ##
-## ×Joda™ w/Big Pickle ###########################
+## ×Joda™ ft. Big Pickle #########################
 EOF
 
 DOTFILES_REPO="https://codeberg.org/xjoda/ornstein"
@@ -140,6 +141,8 @@ sudo mkinitcpio -P
 echo "==> Updating GRUB config..."
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
+elapsed=$(($(date +%s) - start_time))
+minutes=$((elapsed / 60))
+seconds=$((elapsed % 60))
+echo "✔ Install finished in ${minutes}m ${seconds}s. You should probably reboot now."
 
-
-echo "✔ Done."
