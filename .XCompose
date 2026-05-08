@@ -1,0 +1,11 @@
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+
+<Multi_key> <o> <k> : "👍" U+1F44D
+<Multi_key> <l> <o> <l> : "😂" U+1F602
+<Multi_key> <s> <h> <r> <u> <g> : "🤷" U+1F937
+<Multi_key> <r> <o> <f> <l> : "🤣" U+1F923
+<Multi_key> <k> <i> <s> <s> : "😘" U+1F618
+<Multi_key> <f> <i> <r> <e> : "🔥" U+1F525
+<Multi_key> <c> <h> <e> <e> <s> <e> : "😁" U+1F601
+<Multi_key> <w> <i> <n> <k> : "😉" U+1F609
+<Multi_key> <c> <o> <o> <l> : "😎" U+1F60E
