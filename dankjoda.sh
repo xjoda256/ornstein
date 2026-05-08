@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cat << "EOF"
+if ! pgrep -x Hyprland &>/dev/null; then
+  echo "Hyprland must be running to run this script." >&2
+  exit 1
+fi
+
+lolcat << "EOF"
 ##################################################
 ## ╭──────────────────────────────────────────╮ ##
 ## │another                                   │ ##
@@ -22,7 +27,6 @@ DOTFILES_FALLBACK="git@github.com:xjoda256/ornstein.git"
 DOTDIR="$HOME/.cache/ornstein"
 
 AUR_PACKAGES=(
-  apple-fonts
   fend-bin
   grub-hook
   mintstick
@@ -35,11 +39,20 @@ AUR_PACKAGES=(
 # ---------------------------------------------------------------------------
 # dotfiles (mirrors home dir structure)
 # ---------------------------------------------------------------------------
-echo "==> Cloning dotfiles to $DOTDIR..."
-git clone "$DOTFILES_REPO" "$DOTDIR" || git clone "$DOTFILES_FALLBACK" "$DOTDIR"
+if [[ ! -d "$DOTDIR" ]]; then
+  echo "==> Cloning dotfiles to $DOTDIR..."
+  git clone "$DOTFILES_REPO" "$DOTDIR" || git clone "$DOTFILES_FALLBACK" "$DOTDIR"
+else
+  echo "==> $DOTDIR already exists, skipping clone"
+fi
 
 echo "==> Copying dotfiles to home dir..."
 rsync -a --exclude=.git "$DOTDIR"/ "$HOME"/
+
+echo "==> Creating placeholder configs for hyprland..."
+mkdir -p ~/.config/hypr/dms
+touch ~/.config/hypr/dms/colors.conf
+touch ~/.config/hypr/dms/cursor.conf
 
 # ---------------------------------------------------------------------------
 # system files (from cloned repo's docs/etc/)
@@ -107,6 +120,8 @@ yay -S --needed --noconfirm plymouth-i_use_arch_btw-git
 sudo plymouth-set-default-theme i_use_arch_btw
 
 echo "==> Linking pywalfox colors..."
+mkdir -p ~/.cache/wal
+touch ~/.cache/wal/dank-pywalfox.json
 ln -sf ~/.cache/wal/dank-pywalfox.json ~/.cache/wal/colors.json
 
 echo "==> Enabling services..."
@@ -122,8 +137,13 @@ hyprpm enable dynamic-cursors
 echo "==> Rebuilding initramfs..."
 sudo mkinitcpio -P
 
-echo "==> Updating GRUB config..."
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+
 
 echo "✔ Done."
 
+# NOTES
+# Linking pywalfox colors failed
+# no need for grub-mkconfig anymore
+# need a check if .cache/ornstein exists to avoid the fatal error if you need to restart the script
+# touch empty files to get rid of hyprland.conf error line 212 and 213
+# hyprpm seems too need hyprland to actually be running. 

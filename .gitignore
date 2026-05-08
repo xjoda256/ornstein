@@ -6,8 +6,6 @@
 !docs/**
 !.face
 !wallpaper.jpg
-!screenshot*
-!dankjoda.sh
 !.bashrc
 !.bash_completion
 !.bash_functions
@@ -21,6 +19,8 @@
 !.config/fastfetch/config.jsonc
 !.config/hypr/
 !.config/hypr/*.conf
+!.config/hypr/dms/
+!.config/hypr/dms/*
 !.config/DankMaterialShell/
 !.config/DankMaterialShell/*settings*
 !.config/matugen/
