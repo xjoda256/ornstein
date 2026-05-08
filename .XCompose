@@ -9,3 +9,4 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <c> <h> <e> <e> <s> <e> : "😁" U+1F601
 <Multi_key> <w> <i> <n> <k> : "😉" U+1F609
 <Multi_key> <c> <o> <o> <l> : "😎" U+1F60E
+<Multi_key> <w> <o> <w> : "🤯" U+1F92F
