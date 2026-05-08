@@ -137,13 +137,9 @@ hyprpm enable dynamic-cursors
 echo "==> Rebuilding initramfs..."
 sudo mkinitcpio -P
 
+echo "==> Updating GRUB config..."
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
 
 
 echo "✔ Done."
-
-# NOTES
-# Linking pywalfox colors failed
-# no need for grub-mkconfig anymore
-# need a check if .cache/ornstein exists to avoid the fatal error if you need to restart the script
-# touch empty files to get rid of hyprland.conf error line 212 and 213
-# hyprpm seems too need hyprland to actually be running. 

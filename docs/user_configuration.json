@@ -45,7 +45,7 @@
                         "fs_type": "fat32",
                         "mount_options": [],
                         "mountpoint": "/boot",
-                        "obj_id": "9440d705-be56-4930-80bb-a4fd878c82a9",
+                        "obj_id": "3b528ed5-7e07-44d0-a696-e4191144e40b",
                         "size": {
                             "sector_size": {
                                 "unit": "B",
@@ -91,7 +91,7 @@
                             "compress=zstd"
                         ],
                         "mountpoint": null,
-                        "obj_id": "44db55f9-20ba-49e9-b6d8-1769d4959a7c",
+                        "obj_id": "ab0c8bd1-cded-430f-9174-44518ef44653",
                         "size": {
                             "sector_size": {
                                 "unit": "B",
