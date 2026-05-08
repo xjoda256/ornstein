@@ -22,7 +22,7 @@ Post-install bootstrap for my Arch Linux setup. Designed to be run after an arch
 ## Usage
 
 ```sh
-curl -sSf https://raw.githubusercontent.com/xjoda256/dankjoda/main/dankjoda.sh | bash
+curl -fsSL https://raw.githubusercontent.com/xjoda256/dankjoda/main/dankjoda.sh | bash
 ```
 
 Or download and run locally:
