@@ -110,6 +110,9 @@ if ! command -v yay &>/dev/null; then
   yay_install
 fi
 
+echo "==> Updating system and AUR packages..."
+yay -Syua --noconfirm
+
 # ---------------------------------------------------------------------------
 # AUR packages
 # ---------------------------------------------------------------------------
