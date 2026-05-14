@@ -2,7 +2,7 @@
 
 ## === ×Joda™ === ##
 GRUB_DEFAULT=saved
-GRUB_TIMEOUT=5
+GRUB_TIMEOUT=3
 GRUB_DISTRIBUTOR="Arch"
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet splash"
 GRUB_CMDLINE_LINUX="zswap.enabled=0 rootfstype=btrfs"
@@ -15,7 +15,7 @@ GRUB_PRELOAD_MODULES="part_gpt part_msdos"
 
 # Set to 'countdown' or 'hidden' to change timeout behavior,
 # press ESC key to display menu.
-GRUB_TIMEOUT_STYLE=menu
+GRUB_TIMEOUT_STYLE=hidden
 
 # Uncomment to use basic console
 GRUB_TERMINAL_INPUT=console

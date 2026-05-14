@@ -1,0 +1,6 @@
+[Unit]
+Description=Backup /etc/ system files to docs/etc/
+
+[Service]
+Type=oneshot
+ExecStart=/home/joda/bin/update-docs-etc.sh

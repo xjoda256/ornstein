@@ -44,10 +44,10 @@ n() {
 	if [ $# -eq 0 ]; then
 		echo
 		printf '%*s\n' "$(tput cols)" '' | sed 's/ /─/g'
-		tail ~/docs/notes -n "${1:-10}"
+		tail ~/Documents/notes -n "${1:-10}"
 		printf '%*s\n' "$(tput cols)" '' | sed 's/ /─/g'
 	else
-		echo "$@" >>~/docs/notes
+		echo "$@" >>~/Documents/notes
 		echo "note added"
 	fi
 }

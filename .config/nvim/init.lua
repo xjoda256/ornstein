@@ -1,13 +1,12 @@
------------------------------
--- ~/.config/nvim/init.lua --
--- ×Joda™ -------------------
------------------------------
+-- ~/.config/nvim/init.lua
+-- ×Joda™
 
 -- vim options --
 vim.o.number = true
 vim.o.showmatch = true
 vim.o.cursorline = true
 vim.o.swapfile = false
+vim.o.undofile = true
 vim.o.termguicolors = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
@@ -83,9 +82,11 @@ require("snacks").setup({
 })
 
 vim.lsp.config("lua_ls", {
+	root_markers = { ".luarc.json", ".luarc.jsonc", "selene.toml", "stylua.toml" },
 	settings = {
 		Lua = {
 			workspace = {
+				checkThirdParty = false,
 				library = vim.api.nvim_get_runtime_file("", true),
 			},
 		},

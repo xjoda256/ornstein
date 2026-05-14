@@ -60,27 +60,7 @@ touch ~/.config/hypr/dms/cursor.conf
 # system files (from cloned repo's docs/etc/)
 # ---------------------------------------------------------------------------
 echo "==> Copying system config files..."
-DOCS_ETC="$DOTDIR/docs/etc"
-SYSTEM_FILES=(
-  pacman.conf
-  makepkg.conf
-  mkinitcpio.conf
-  sudoers
-  default/grub
-  plymouth/plymouthd.conf
-  systemd/system/plymouth-wait.service
-)
-
-for f in "${SYSTEM_FILES[@]}"; do
-  src="$DOCS_ETC/$f"
-  dest="/etc/$f"
-  if [[ -f "$src" ]]; then
-    echo "  Installing $dest"
-    sudo cp "$src" "$dest"
-  else
-    echo "  WARNING: $src not found, skipping"
-  fi
-done
+sudo rsync -a "$DOTDIR/docs/etc"/ /etc/
 
 # ---------------------------------------------------------------------------
 # yay_install - builds yay-bin from the AUR
