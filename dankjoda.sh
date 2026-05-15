@@ -7,20 +7,20 @@ if ! pgrep -x Hyprland &>/dev/null; then
   exit 1
 fi
 
-lolcat << "EOF"
-##################################################
-## ╭──────────────────────────────────────────╮ ##
-## │another                                   │ ##
-## │       _____              __              │ ##
-## │      /\___ \            /\ \             │ ##
-## │ __  _\/__/\ \    ___    \_\ \     __     │ ##
-## │/\ \/'\  _\ \ \  / __`\  /'_` \  /'__`\   │ ##
-## │\/>  </ /\ \_\ \/\ \L\ \/\ \L\ \/\ \L\.\_ │ ##
-## │ /\_/\_\\ \____/\ \____/\ \___,_\ \__/.\_\│ ##
-## │ \//\/_/ \/___/  \/___/  \/__,_ /\/__/\/_/│ ##
-## │                               masterpiece│ ##
-## ╰──────────────────────────────────────────╯ ##
-## ×Joda™ ft. Big Pickle #########################
+clear
+lolcat -t -p 1 -F 0.5 -a -s 64 << "EOF"
+ ╭──────────────────────────────────────────╮
+ │another                                   │
+ │       _____              __              │
+ │      /\___ \            /\ \             │
+ │ __  _\/__/\ \    ___    \_\ \     __     │
+ │/\ \/'\  _\ \ \  / __`\  /'_` \  /'__`\   │
+ │\/>  </ /\ \_\ \/\ \L\ \/\ \L\ \/\ \L\.\_ │
+ │ /\_/\_\\ \____/\ \____/\ \___,_\ \__/.\_\│
+ │ \//\/_/ \/___/  \/___/  \/__,_ /\/__/\/_/│
+ │                               masterpiece│
+ ╰──────────────────────────────────────────╯
+ ×Joda™ ft. Big Pickle
 EOF
 
 DOTFILES_REPO="https://codeberg.org/xjoda/ornstein"
@@ -100,9 +100,17 @@ yay -Syua --noconfirm
 echo "==> Installing AUR packages..."
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 
+echo "==> Setting Papirus folder color..."
+sudo papirus-folders -C grey
+
 echo "==> Installing plymouth theme..."
 yay -S --needed --noconfirm plymouth-i_use_arch_btw-git
 sudo plymouth-set-default-theme i_use_arch_btw
+
+echo "==> Installing GRUB theme..."
+yay -S --needed --noconfirm grub-theme-arch-linux
+sudo mkdir -p /boot/grub/themes
+sudo cp -r /usr/share/grub/themes/Arch-Linux /boot/grub/themes/
 
 echo "==> Linking pywalfox colors..."
 mkdir -p ~/.cache/wal
@@ -112,6 +120,8 @@ ln -sf ~/.cache/wal/dank-pywalfox.json ~/.cache/wal/colors.json
 echo "==> Enabling services..."
 sudo systemctl enable --now sshd.service
 sudo systemctl enable --now plymouth-wait.service
+sudo systemctl enable --now reflector-mirrorlist.timer
+sudo systemctl enable --now update-docs-etc.timer
 systemctl --user enable --now psd.service
 
 echo "==> Updating Hypr plugins..."
