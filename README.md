@@ -5,13 +5,15 @@ Post-install bootstrap for my Arch Linux setup. Also doubles as an update tool o
 ## What it does
 
 1. Clones/pulls [ornstein](https://codeberg.org/xjoda/ornstein) dotfiles (GitHub fallback) to `~/.cache/ornstein` and rsyncs them home
-2. Copies system configs (`pacman.conf`, `makepkg.conf`, `mkinitcpio.conf`, `sudoers`, GRUB, Plymouth) from `docs/etc/`
+2. Copies system configs from [`docs/etc/`](docs/etc/) to `/etc/`
 3. Installs `yay-bin` if not present, then runs a full system update (`yay -Syua`)
-4. Installs AUR packages
-5. Sets up Plymouth theme, pywalfox, and systemd services
-6. Installs Hypr dynamic-cursors plugin (skips if already present)
-7. Rebuilds initramfs and updates GRUB
-8. Prints elapsed time
+4. Installs AUR packages (`papirus-folders`, `python-pywalfox`, `qt6ct-kde`, etc.)
+5. Sets Papirus folder color
+6. Installs Plymouth theme and GRUB theme
+7. Links pywalfox colors
+8. Enables systemd services
+9. Installs Hyprland dynamic-cursors plugin (skips if already present)
+10. Rebuilds initramfs and updates GRUB
 
 ## Requirements
 
@@ -35,6 +37,5 @@ Or download and run locally:
 ## Notes
 
 - Safe to re-run if it fails partway through (skips completed steps)
-- Re-running also works as a system/dotfiles updater
 - Requires Hyprland to be running (needed for hyprpm)
 - System files are copied with `sudo`, so you'll be prompted for credentials
