@@ -20,7 +20,7 @@
 !.config/fastfetch/
 !.config/fastfetch/config.jsonc
 !.config/hypr/
-!.config/hypr/*.conf
+!.config/hypr/*.lua
 !.config/hypr/dms/
 !.config/hypr/dms/**
 !.config/DankMaterialShell/

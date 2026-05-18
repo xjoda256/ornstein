@@ -11,3 +11,7 @@ output_path = '/home/joda/.config/kitty/dank-theme.conf'
 [templates.kitty-tabs]
 input_path = '/home/joda/.config/matugen/templates/kitty-tabs.conf'
 output_path = '/home/joda/.config/kitty/dank-tabs.conf'
+
+[templates.hypr-colors-lua]
+input_path = '/home/joda/.config/matugen/templates/hypr-colors.lua'
+output_path = '/home/joda/.config/hypr/dms/colors.lua'
