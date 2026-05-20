@@ -4,6 +4,8 @@
 !bin/**
 !docs/
 !docs/**
+!html/
+!html/**
 !.face
 !wallpaper.jpg
 !.bashrc

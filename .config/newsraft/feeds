@@ -1,3 +1,4 @@
+http://127.0.0.1:9876/feed
 https://archlinux.org/feeds/news/ "Arch news"
 https://archlinux.org/feeds/packages/ "Arch Package Updates"
 https://aur.archlinux.org/rss/ "AUR updates"

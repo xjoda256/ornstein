@@ -1,0 +1,79 @@
+/* Color palette source: ~/.cache/DankMaterialShell/dms-colors.json
+ * Dank16 colors (dark mode default):
+ *   color0: #15121a (background)   color8: #818b87
+ *   color1: #f7996f (red)         color9: #ffbd9f
+ *   color2: #6bd76f (green)       color10: #a5ffa9
+ *   color3: #fff272 (yellow)      color11: #fff6a5
+ *   color4: #69cca4 (teal)        color12: #9beccb
+ *   color5: #196345 (dark green)  color13: #b6ffe1
+ *   color6: #80d7b4 (light teal)  color14: #d0ffec
+ *   color7: #d4e1dc (light gray)  color15: #f8fffc (text)
+ *
+ * Usage: tell me to "update ~/html/style.css from dms-colors.json"
+ */
+
+body { 
+  font-family: system-ui, -apple-system, sans-serif; 
+  max-width: 800px; 
+  margin: 1cm auto; 
+  padding: 1cm; 
+  line-height: 1.3; 
+  font-size: 14pt;
+  background-color: #15121a;
+  color: #e8e0eb;
+}
+header h1 { font-size: 48pt; margin: 0; color: #f8fffc; position: absolute; top: 20px; left: 20px; }
+h1 { font-size: 16pt; margin: 0.2em 0; color: #f8fffc; }
+h2 { font-size: 12pt; margin: 0.3em 0 0.2em; color: #fff6a5; }
+p { margin: 0.3em 0; }
+a { color: #80d7b4; }
+strong { color: #80d7b4; }
+ul { margin: 0.3em 0; padding-left: 1.2em; }
+li { margin: 0.2em 0; }
+.tab { display: inline-block; width: 1em; }
+footer { margin-top: 2em; padding-top: 1em; border-top: 1px solid #4a4453; font-size: 0.8em; color: #818b87; text-align: center; }
+blockquote {
+  border-left: 3px solid #80d7b4;
+  margin: 0.5em 0;
+  padding-left: 0.5em;
+  color: #818b87;
+  font-style: italic;
+}
+pre { 
+  background-color: #15121a;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1; 
+  margin: 0.3em 0; 
+  padding: 0.5em;
+}
+pre .line { 
+  margin: 0; 
+  display: block;
+  line-height: 1;
+}
+.line-number {
+  display: inline-block;
+  width: 3em;
+  text-align: right;
+  padding-right: 0.5em;
+  margin-right: 0.5em;
+  color: #818b87;
+  border-right: 1px solid #4a4453;
+  user-select: none;
+}
+.comment { color: #818b87; }
+.keyword { color: #80d7b4; }
+.string { color: #6bd76f; }
+.variable { color: #69cca4; }
+.function { color: #fff272; }
+.operator { color: #f7996f; }
+.builtin { color: #69cca4; }
+.option { color: #9beccb; }
+.path { color: #69cca4; }
+.number { color: #fff6a5; }
+.punctuation { color: #818b87; }
+.shebang { color: #f7996f; }
+.tab { display: inline-block; width: 1em; }
