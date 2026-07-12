@@ -37,3 +37,5 @@
 !.config/Thunar/**
 !.config/yazi/
 !.config/yazi/**
+!cookbook.pdf
+!recipes.txt
